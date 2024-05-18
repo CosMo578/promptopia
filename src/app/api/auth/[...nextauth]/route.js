@@ -12,14 +12,14 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async session({ session, token, user }) {
-        const sessionUser = await User.findOne({
-          email: session.user.email,
-        });
-        session.user.id = sessionUser._id.toString();
+    async session({ session }) {
+      const sessionUser = await User.findOne({
+        email: session.user.email,
+      });
+      session.user.id = sessionUser._id.toString();
       return session;
     },
-    async signIn({profile}) {
+    async signIn({ profile }) {
       try {
         await connectToDB();
         // Check if user exists
@@ -40,4 +40,4 @@ const handler = NextAuth({
   },
 });
 
-export default handler;
+export { handler as GET, handler as POST };

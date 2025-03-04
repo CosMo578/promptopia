@@ -1,9 +1,8 @@
-import { connectToDB } from "@utils/database";
-import NextAuth from "next-auth/next";
-import GoogleProvider from "next-auth/providers/google";
-import User from "@models/user";
+import { connectToDB } from '@utils/database';
+import NextAuth from 'next-auth/next';
+import GoogleProvider from 'next-auth/providers/google';
+import User from '@models/user';
 
-// Suggested code may be subject to a license. Learn more: ~LicenseLog:1449800208.
 const handler = NextAuth({
   providers: [
     GoogleProvider({
@@ -24,10 +23,11 @@ const handler = NextAuth({
         await connectToDB();
         // Check if user exists
         const userExists = await User.findOne({ email: profile.email });
+        
         if (!userExists) {
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
+            username: profile.name.replace(' ', '').toLowerCase(),
             image: profile.picture,
           });
         }

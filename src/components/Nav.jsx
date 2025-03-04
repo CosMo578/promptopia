@@ -18,33 +18,34 @@ const Nav = () => {
   }, []);
 
   return (
-    <nav className="flex-between mb-16 w-full pt-3">
-      <Link href="/" className="flex gap-2 flex-center">
+    <nav className='flex-between mb-16 w-full pt-3'>
+      <Link href='/' className='flex gap-2 flex-center'>
         <Image
-          src="/assets/images/logo.svg"
+          src='/assets/images/logo.svg'
           width={30}
           height={30}
-          alt="Promptopia Logo"
-          className="object-contain"
+          alt='Promptopia Logo'
+          className='object-contain'
         />
-        <p className="logo_text"></p>
+        <p className='logo_text'></p>
       </Link>
 
       {/* Desktop Nav */}
-      <div className="sm:flex hidden">
+      <div className='sm:flex hidden'>
         {session?.user ? (
-          <div className="flex gap-3 md:gap-5">
-            <Link href="/create-prompt" className="black_btn">
+          <div className='flex gap-3 md:gap-5'>
+            <Link href='/create-prompt' className='black_btn'>
               Create Post
             </Link>
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button type='button' onClick={signOut} className='outline_btn'>
               Sign Out
             </button>
 
-            <Link href="/profile">
+            <Link href='/profile'>
               <Image
+                className='rounded-full'
                 src={session?.user.image}
-                alt="profile"
+                alt='profile'
                 width={37}
                 height={37}
               />
@@ -55,10 +56,10 @@ const Nav = () => {
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
-                  type="button"
+                  type='button'
                   key={provider.id}
                   onClick={() => signIn(provider.id)}
-                  className="black_btn">
+                  className='black_btn'>
                   Sign In
                 </button>
               ))}
@@ -67,38 +68,38 @@ const Nav = () => {
       </div>
 
       {/* Mobile Nav */}
-      <div className="sm:hidden flex relative ">
+      <div className='sm:hidden flex relative '>
         {session?.user ? (
-          <div className="flex">
+          <div className='flex'>
             <Image
-              className="cursor-pointer"
+              className='cursor-pointer rounded-full'
               src={session?.user.image}
-              alt="profile"
+              alt='profile'
               width={37}
               height={37}
               onClick={() => setToggleDropdown((prev) => !prev)}
             />
             {toggleDropdown && (
-              <div className="dropdown">
+              <div className='dropdown'>
                 <Link
-                  href="/profile"
-                  className="dropdown_link"
+                  href='/profile'
+                  className='dropdown_link'
                   onClick={() => setToggleDropdown((prev) => !prev)}>
                   My Profile
                 </Link>
                 <Link
-                  href="/create-prompt"
-                  className="dropdown_link"
+                  href='/create-prompt'
+                  className='dropdown_link'
                   onClick={() => setToggleDropdown((prev) => !prev)}>
                   Create Prompt
                 </Link>
                 <button
-                  type="button"
+                  type='button'
                   onClick={() => {
                     setToggleDropdown((prev) => !prev);
                     signOut();
                   }}
-                  className="mt-5 w-full black_btn">
+                  className='mt-5 w-full black_btn'>
                   Sign Out
                 </button>
               </div>
@@ -109,10 +110,10 @@ const Nav = () => {
             {providers &&
               Object.values(providers).map((provider) => (
                 <button
-                  type="button"
+                  type='button'
                   key={provider.id}
                   onClick={() => signIn(provider.id)}
-                  className="black_btn">
+                  className='black_btn'>
                   Sign In
                 </button>
               ))}

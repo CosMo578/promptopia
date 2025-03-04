@@ -38,7 +38,7 @@ const Feed = () => {
     );
 
     setFilteredPost(filterPost);
-  }, [filteredPost, posts, searchText]);
+  }, [posts, searchText]);
 
   useEffect(() => {
     const fetchPosts = async () => {
